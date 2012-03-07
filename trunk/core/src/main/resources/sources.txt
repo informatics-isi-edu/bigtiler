@@ -1,0 +1,2 @@
+edu.isi.misd.image.gateway.conversion.ndpi.NdpiImageSource
+edu.isi.misd.image.gateway.conversion.loci.LociImageSource
