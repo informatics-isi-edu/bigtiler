@@ -19,6 +19,7 @@ package edu.isi.misd.image.gateway.conversion.loci;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -101,7 +102,7 @@ public class LociImageSource implements ImageSource {
         this(filename, 0, 0);
 
         // find the largest image
-        long maxPixels = 0;
+        BigInteger maxPixels = BigInteger.ZERO;
         int series = 0;
 
         if (LOG.isDebugEnabled()) {
@@ -110,11 +111,13 @@ public class LociImageSource implements ImageSource {
         synchronized (reader) {
             for (int i = 0; i < reader.getSeriesCount(); i++) {
                 reader.setSeries(i);
-                long pixels = reader.getSizeX() * reader.getSizeY();
+                BigInteger pixels = new BigInteger(Integer.toString(reader
+                        .getSizeX())).multiply(new BigInteger(Integer
+                        .toString(reader.getSizeY())));
                 if (LOG.isDebugEnabled()) {
                     LOG.debug("Series " + i + "=" + pixels + " pixels");
                 }
-                if (pixels > maxPixels) {
+                if (pixels.compareTo(maxPixels) > 0) {
                     series = i;
                     maxPixels = pixels;
                 }
