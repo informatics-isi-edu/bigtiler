@@ -18,11 +18,11 @@ CORE_PACKAGE=bigtiler-bin
 AUTOMATION_PACKAGE=bigtiler-automation-bin
 JDOCS_PACKAGE=bigtiler-docs
 
-VERSION=2.0.0
+VERSION=2.1.0
 
 tar_core: package_core
-	tar --exclude=.svn -czf $(DIST)/$(CORE_PACKAGE)-$(VERSION).tar.gz \
-	$(DIST)/$(CORE_PACKAGE)
+	cd $(DIST) && tar --exclude=.svn -czf $(CORE_PACKAGE)-$(VERSION).tar.gz \
+	$(CORE_PACKAGE)
 
 tar_automation: package_automation
 	tar --exclude=.svn -czf $(DIST)/$(AUTOMATION_PACKAGE)-$(VERSION).tar.gz \
