@@ -87,7 +87,7 @@ public class LociImageSource implements ImageSource {
     }
 
     /**
-     * Constructor.
+     * Constructor that defaults to the largest image series in the set.
      * 
      * @param filename
      *            name of the source image
@@ -99,6 +99,32 @@ public class LociImageSource implements ImageSource {
     public LociImageSource(final String filename) throws DependencyException,
     ServiceException, IOException, FormatException {
         this(filename, 0, 0);
+
+        // find the largest image
+        long maxPixels = 0;
+        int series = 0;
+
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("No image series specified - locating largest image as default.");
+        }
+        synchronized (reader) {
+            for (int i = 0; i < reader.getSeriesCount(); i++) {
+                reader.setSeries(i);
+                long pixels = reader.getSizeX() * reader.getSizeY();
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("Series " + i + "=" + pixels + " pixels");
+                }
+                if (pixels > maxPixels) {
+                    series = i;
+                    maxPixels = pixels;
+                }
+            }
+            this.seriesNumber = series;
+        }
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Series " + this.seriesNumber
+                    + " is the largest image and will be used as the default.");
+        }
     }
 
     public LociImageSource(final BufferedImageReader imageReader,
