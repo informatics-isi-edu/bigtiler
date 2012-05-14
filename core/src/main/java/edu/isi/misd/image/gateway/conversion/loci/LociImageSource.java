@@ -113,7 +113,7 @@ public class LociImageSource implements ImageSource {
                 reader.setSeries(i);
                 BigInteger pixels = new BigInteger(Integer.toString(reader
                         .getSizeX())).multiply(new BigInteger(Integer
-                        .toString(reader.getSizeY())));
+                                .toString(reader.getSizeY())));
                 if (LOG.isDebugEnabled()) {
                     LOG.debug("Series " + i + "=" + pixels + " pixels");
                 }
@@ -123,6 +123,7 @@ public class LociImageSource implements ImageSource {
                 }
             }
             this.seriesNumber = series;
+            reader.setSeries(this.seriesNumber);
         }
         if (LOG.isDebugEnabled()) {
             LOG.debug("Series " + this.seriesNumber
