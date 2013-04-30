@@ -3,7 +3,7 @@
   <parent>
     <groupId>bigtiler</groupId>
     <artifactId>bigtiler</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>bigtiler-core</artifactId>
@@ -108,7 +108,7 @@
     <dependency>
       <groupId>loci</groupId>
       <artifactId>loci_tools</artifactId>
-      <version>4.3.3.20111216</version>
+      <version>4.4.7.20130429</version>
       <type>jar</type>
     </dependency>
     <dependency>
