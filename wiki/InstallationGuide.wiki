@@ -69,4 +69,4 @@ _If you are interested in running BigTiler on image types that are listed in our
 ==How long will it take to convert an image to Zoomify JPEG tiles?==
 Since the BigTiler utilities are very CPU and disk-write intensive, performance will vary on each system. However we have noticed that it takes approximately 1 hour per 1 GB of compressed image space to finish processing the image into tiles.
 =Contact Us=
-Email smithd@isi.edu
+Email support@birncommunity.org
